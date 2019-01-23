@@ -5,44 +5,44 @@ public class SnakeSegment {
     private int mXLoc;
     private int mYLoc;
     private int mDegrees;
-    private bodyPart mBodyPart;
+    private Body mBodyPart;
 
-    SnakeSegment(int xLoc, int yLoc, int degrees, bodyPart bodyPart){
+    SnakeSegment(Body bodyPart, int degrees, int xLoc, int yLoc){
         mXLoc = xLoc;
         mYLoc = yLoc;
         mDegrees = degrees;
         mBodyPart = bodyPart;
     }
 
-    public enum bodyPart{
+    protected enum Body{
         HEAD, BODY, TAIL
     }
 
-    public bodyPart getBodyParts() {
+    protected Body getBodyPart() {
         return mBodyPart;
     }
 
-    public int getXLoc() {
+    protected int getXLoc() {
         return mXLoc;
     }
 
-    public void setXLoc(int XLoc) {
+    protected void setXLoc(int XLoc) {
         mXLoc = XLoc;
     }
 
-    public int getYLoc() {
+    protected int getYLoc() {
         return mYLoc;
     }
 
-    public void setYLoc(int YLoc) {
+    protected void setYLoc(int YLoc) {
         mYLoc = YLoc;
     }
 
-    public int getDegrees() {
+    protected int getDegrees() {
         return mDegrees;
     }
 
-    public void setDegrees(int degrees) {
+    protected void setDegrees(int degrees) {
         mDegrees = degrees;
     }
 
