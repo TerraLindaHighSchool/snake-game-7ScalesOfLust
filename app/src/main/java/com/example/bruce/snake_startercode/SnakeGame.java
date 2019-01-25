@@ -3,21 +3,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SnakeGame {
-  private int mSpriteDim, mBOARD_WIDTH, mBOARD_HEIGHT, mScore, mLevel, mCountdown, mMillisDelay;
+  private int mSpriteDim, mBOARD_WIDTH, mBOARD_HEIGHT, mScore, mLevel, mCountdown, mMillisDelay, mXMax, mYMax;
   private int[] mAppleCoord;
   private List <SnakeSegment> mSnake;
   private boolean mGameOver;
 
 
-  public SnakeGame(int beginningDirection, int beginningSpriteDim, int beginningX, int beginningY, int width, int height){
+  public SnakeGame(int beginningDirection, int beginningSpriteDim, int beginningX, int beginningY, int width, int height, int xMax, int yMax){
     mSpriteDim = beginningSpriteDim;
     mBOARD_WIDTH = width;
     mBOARD_HEIGHT = height;
+    mXMax = xMax;
+    mYMax = yMax;
     mScore = 0;
     mLevel = 1;
     mCountdown = 12;
     mMillisDelay = 400;
     mAppleCoord = new int[2];
+    setAppleCoord();
     mSnake = new ArrayList<>();
     mSnake.add(new SnakeSegment(SnakeSegment.Body.HEAD, beginningDirection,beginningX,beginningY));
     mSnake.add(new SnakeSegment(SnakeSegment.Body.BODY, beginningDirection,beginningX-1,beginningY));
@@ -34,7 +37,20 @@ public class SnakeGame {
   }
 
   protected boolean play(){
-    return false;
+    for(int segment = 0; segment < mSnake.size(); segment++){
+      mSnake.get(segment).setXLoc(mSnake.get(segment).getXLoc()+1);
+
+      if(mSnake.get(segment).getXLoc() > mXMax){
+        mGameOver = true;
+      }
+    }
+
+    return mGameOver;
+  }
+
+  private void setAppleCoord(){
+    mAppleCoord[0] = (int)(mBOARD_WIDTH*Math.random());
+    mAppleCoord[1] = (int)(mBOARD_HEIGHT*Math.random());
   }
 
   // getters and Setters
