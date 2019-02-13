@@ -95,8 +95,9 @@ public class SnakeGame {
 
   protected void eatApple(){
     if((mSnake.get(0).getXLoc() == mAppleCoord[0] / mSpriteDim) && mSnake.get(0).getYLoc() == mAppleCoord[1] / mSpriteDim) {
-      growSnake();
-      setAppleCoord();
+        updateScore();
+        growSnake();
+        setAppleCoord();
     }
   }
 
@@ -140,7 +141,17 @@ public class SnakeGame {
               || (mSnake.get(segment).getYLoc() <= 0-1)){
         mGameOver = true;
       }
+
+      if((mSnake.get(0).getXLoc() == mSnake.get(segment).getXLoc()) && (mSnake.get(0).getYLoc() == mSnake.get(segment).getYLoc())){
+          mGameOver = true;
+      }
     }
+
+    if(mCountdown <= 0){
+        mLevel++;
+        mCountdown = 12;
+    }
+
     return mGameOver;
   }
 
@@ -149,6 +160,10 @@ public class SnakeGame {
     mAppleCoord[1] = (int)((mBOARD_HEIGHT-1)*Math.random()+1);
   }
 
+  private void updateScore(){
+      mScore++;
+      mCountdown--;
+  }
   // getters and Setters
 
   protected int getSpriteDim(){
