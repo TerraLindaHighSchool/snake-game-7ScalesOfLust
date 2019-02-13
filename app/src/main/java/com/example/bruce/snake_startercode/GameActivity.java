@@ -47,7 +47,7 @@ public class GameActivity extends AppCompatActivity {
         mBOARD_HEIGHT = (int) getResources().getDimension(R.dimen.height);
 
         // Instantiate the game
-        mGame = new SnakeGame(0,60,3,4, mBOARD_WIDTH, mBOARD_HEIGHT, 10, 10);
+        mGame = new SnakeGame(0,60,3,4, mBOARD_WIDTH, mBOARD_HEIGHT);
 
         //  Add Bitmaps
         mHeadBitmap = BitmapFactory.decodeResource(mImageView.getResources(), R.drawable.head);
