@@ -142,8 +142,11 @@ public class SnakeGame {
         mGameOver = true;
       }
 
-      if((mSnake.get(0).getXLoc() == mSnake.get(segment).getXLoc()) && (mSnake.get(0).getYLoc() == mSnake.get(segment).getYLoc())){
-          mGameOver = true;
+      int collisionSeg = segment;
+      if(!(collisionSeg == 0)) {
+          if ((mSnake.get(0).getXLoc() == mSnake.get(segment).getXLoc()) && (mSnake.get(0).getYLoc() == mSnake.get(segment).getYLoc())) {
+              mGameOver = true;
+          }
       }
     }
 
