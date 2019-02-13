@@ -19,7 +19,7 @@ public class SnakeGame {
     mScore = 0;
     mLevel = 1;
     mCountdown = 12;
-    mMillisDelay = 400;
+    mMillisDelay = 400*mLevel;
     mAppleCoord = new int[2];
     setAppleCoord();
     mSnake = new ArrayList<>();
