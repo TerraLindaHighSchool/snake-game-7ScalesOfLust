@@ -19,7 +19,7 @@ public class SnakeGame {
     mScore = 0;
     mLevel = 1;
     mCountdown = 12;
-    mMillisDelay = 400*mLevel;
+    mMillisDelay = 400;
     mAppleCoord = new int[2];
     setAppleCoord();
     mSnake = new ArrayList<>();
@@ -94,7 +94,7 @@ public class SnakeGame {
   }
 
   protected void eatApple(){
-    if((mSnake.get(0).getXLoc() == mAppleCoord[0] / mSpriteDim) && mSnake.get(0).getYLoc() == mAppleCoord[1] / mSpriteDim) {
+    if((mSnake.get(0).getXLoc() == mAppleCoord[0] / mSpriteDim) && mSnake.get(0).getYLoc() == (mAppleCoord[1] / mSpriteDim)+1) {
         updateScore();
         growSnake();
         setAppleCoord();
@@ -153,14 +153,15 @@ public class SnakeGame {
     if(mCountdown <= 0){
         mLevel++;
         mCountdown = 12;
+        mMillisDelay /= 2;
     }
 
     return mGameOver;
   }
 
   private void setAppleCoord(){
-    mAppleCoord[0] = (int)((mBOARD_WIDTH-1)*Math.random()+1);
-    mAppleCoord[1] = (int)((mBOARD_HEIGHT-1)*Math.random()+1);
+    mAppleCoord[0] = (int)(((mXMax-1)*Math.random()+1)*mSpriteDim);
+    mAppleCoord[1] = (int)(((mYMax-1)*Math.random()+1)*mSpriteDim);
   }
 
   private void updateScore(){
