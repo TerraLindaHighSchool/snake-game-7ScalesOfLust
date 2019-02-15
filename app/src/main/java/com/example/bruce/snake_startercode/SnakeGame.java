@@ -160,8 +160,10 @@ public class SnakeGame {
   }
 
   private void setAppleCoord(){
-    mAppleCoord[0] = (int)(((mXMax-1)*Math.random()+1)*mSpriteDim);
-    mAppleCoord[1] = (int)(((mYMax-1)*Math.random()+1)*mSpriteDim);
+    do {
+      mAppleCoord[0] = (int) (((mXMax - 1) * Math.random() + 1) * mSpriteDim);
+      mAppleCoord[1] = (int) (((mYMax - 1) * Math.random() + 1) * mSpriteDim);
+    } while((mAppleCoord[0] == mSnake.get(0).getXLoc()) && (mAppleCoord[1] == mSnake.get(0).getYLoc()));
   }
 
   private void updateScore(){
