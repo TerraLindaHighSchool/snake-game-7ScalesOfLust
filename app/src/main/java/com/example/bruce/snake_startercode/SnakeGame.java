@@ -21,12 +21,12 @@ public class SnakeGame {
     mCountdown = 12;
     mMillisDelay = 400;
     mAppleCoord = new int[2];
-    setAppleCoord();
     mSnake = new ArrayList<>();
     mPivotPoint = new ArrayList<>();
     mSnake.add(new SnakeSegment(SnakeSegment.Body.HEAD, beginningDirection,beginningX,beginningY));
     mSnake.add(new SnakeSegment(SnakeSegment.Body.BODY, beginningDirection,beginningX-1,beginningY));
     mSnake.add(new SnakeSegment(SnakeSegment.Body.TAIL, beginningDirection,beginningX-2,beginningY));
+    setAppleCoord();
     mGameOver = false;
   }
 
